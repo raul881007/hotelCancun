@@ -7,19 +7,25 @@ import javax.persistence.*;
 @Table(name="room")
 public class Room {
 
-
+    /**
+     * Table id
+     */
     @Id()
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
+    /**
+     * Column with the room number
+     */
     @Column(name = "number")
     private int number;
 
+    /**
+     * Column with the room description
+     */
     @Column(name = "description")
     private String description;
 
-    @Column(name = "image_url")
-    private String imageUrl;
 
     /**
      * Empty constructor
@@ -31,24 +37,9 @@ public class Room {
      * Creates a new constructor
      * @param number creates room with one number
      */
-    public Room(int number, String description, String imageUrl) {
+    public Room(int number, String description) {
         this.number = number;
         this.description = description;
-        this.imageUrl = imageUrl;
-    }
-    /**
-     * Gets the imageUrl of the room
-     * @return imageUrl
-     */
-    public String getImageUrl() {
-        return imageUrl;
-    }
-    /**
-     * Changes the number
-     * @param imageUrl
-     */
-    public void setImageUrl(String imageUrl) {
-        this.imageUrl = imageUrl;
     }
 
     /**

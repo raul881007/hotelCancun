@@ -70,7 +70,7 @@ public class Reservation {
     }
 
     /**
-     *
+     * Gets the name of the client
      * @return the Client
      */
     public String getClient() {
@@ -141,7 +141,7 @@ public class Reservation {
     }
 
     /**
-     *
+     * Set end date in a reservation
      * @param endDate changes the endDate of the reservation
      */
     public void setEndDate(String endDate) {

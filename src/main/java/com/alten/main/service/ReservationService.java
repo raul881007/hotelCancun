@@ -25,13 +25,41 @@ import java.util.Optional;
 @Service
 public class ReservationService implements ReservationRepository{
 
+    /**
+     * Connection to the repository interface for operations with the database
+     */
     @Autowired
     private ReservationRepository reservationRepository;
 
 
-
+    /**
+     * Entity Manager that establishes the connection for the subsequent use of CriteriaBuilder
+     */
     @PersistenceContext
     EntityManager em;
+
+
+
+    /**
+     * Method that searches a database for reservations for a room
+     * @param roomId room id
+     * @return Reservation list for a room
+     */
+    @Override
+    public List<Reservation> getReservationsByRoom(Long roomId) {
+        CriteriaBuilder builder = em.getCriteriaBuilder();
+        CriteriaQuery<Reservation> query = builder.createQuery( Reservation.class );
+        Root<Reservation> root = query.from( Reservation.class );
+        Join<Object, Object> joinRoom = root.join( "room", JoinType.INNER );
+        query.where( builder.equal( joinRoom.get( "id" ), roomId ) );
+        return em.createQuery( query ).getResultList();
+    }
+
+
+    /**
+     * Methods inherited from the interface
+     *
+     */
 
     @Override
     public List<Reservation> findAll() {
@@ -155,15 +183,6 @@ public class ReservationService implements ReservationRepository{
         return false;
     }
 
-    @Override
-    public List<Reservation> getReservationsByRoom(Long roomId) {
-        CriteriaBuilder builder = em.getCriteriaBuilder();
-        CriteriaQuery<Reservation> query = builder.createQuery( Reservation.class );
-        Root<Reservation> root = query.from( Reservation.class );
-        Join<Object, Object> joinRoom = root.join( "room", JoinType.INNER );
-        query.where( builder.equal( joinRoom.get( "id" ), roomId ) );
-        return em.createQuery( query ).getResultList();
-    }
 
 
 }

@@ -15,6 +15,10 @@ import java.util.Optional;
 @Service
 public class RoomService implements RoomRepository {
 
+
+    /**
+     * Connection to the repository interface for operations with the database
+     */
     @Autowired
     private RoomRepository roomRepository;
 
