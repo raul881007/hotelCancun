@@ -1,0 +1,50 @@
+###
+
+GET http://localhost:8082/room/
+
+<> 2021-05-10T013336.200.json
+
+###
+
+GET http://localhost:8082/reservation/by_room/1
+
+<> 2021-05-10T013431.200.json
+
+###
+
+POST http://localhost:8082/reservation/
+Content-Type: application/json
+
+{"client":"Intellij Client",
+ "room":{
+   "id": 4,
+   "number": 329,
+   "description": "Very comfortable junior suite room to stay with your partner, with a king size bed"
+ },
+  "initialDate": "2021-10-30",
+  "endDate": "2021-10-21"
+}
+
+
+###
+
+PUT http://localhost:8082/reservation/28
+Content-Type: application/json
+
+{"client":"Intellij Client update",
+  "room":{
+    "id": 4,
+    "number": 329,
+    "description": "Very comfortable junior suite room to stay with your partner, with a king size bed"
+  },
+  "initialDate": "2021-10-30",
+  "endDate": "2021-10-21"
+}
+
+###
+
+DELETE http://localhost:8082/reservation/28
+Content-Type: application/json
+
+###
+
