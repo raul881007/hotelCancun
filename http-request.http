@@ -15,7 +15,7 @@ GET http://localhost:8082/reservation/by_room/1
 POST http://localhost:8082/reservation/
 Content-Type: application/json
 
-{"client":"Intellij Client",
+{"client":"Intellij Test",
  "room":{
    "id": 4,
    "number": 329,
